@@ -1,44 +1,56 @@
-# QuickSort Comparison: Randomized vs Deterministic
+# QuickSort Comparison and University Schedule Creation
 
 ## Overview
-This project implements and compares two versions of the QuickSort algorithm: **Randomized QuickSort** and **Deterministic QuickSort**. The goal is to analyze their performance by measuring the average execution time on arrays of different sizes (10,000, 50,000, 100,000, and 500,000 elements) filled with random integers. The results are presented in a table and visualized in a plot.
+This project implements two distinct tasks:
+1. **QuickSort Comparison**: Compares the performance of Randomized QuickSort and Deterministic QuickSort by measuring their average execution time on arrays of different sizes (10,000, 50,000, 100,000, and 500,000 elements) filled with random integers. Results are presented in a table and visualized in a plot.
+2. **University Schedule Creation**: Uses a greedy algorithm to assign teachers to subjects, minimizing the number of teachers required to cover all subjects. The algorithm prioritizes teachers who can cover the most uncovered subjects and selects the youngest teacher in case of a tie.
 
 ## Features
-1. **Randomized QuickSort**: Selects the pivot randomly to reduce the likelihood of worst-case scenarios.
-2. **Deterministic QuickSort**: Uses the last element as the pivot.
-3. **Performance Testing**: Measures average execution time over 5 runs for each array size.
-4. **Results Visualization**: Outputs results in a console table and generates a plot (`quicksort_comparison.png`).
-5. **Analysis**: Provides insights into the performance differences between the two algorithms.
+
+### Task 1: QuickSort Comparison
+- **Randomized QuickSort**: Selects the pivot randomly to reduce the likelihood of worst-case scenarios.
+- **Deterministic QuickSort**: Uses the last element as the pivot.
+- **Performance Testing**: Measures average execution time over 5 runs for each array size.
+- **Results Visualization**: Outputs results in a console table and generates a plot (`quicksort_comparison.png`).
+- **Analysis**: Provides insights into the performance differences between the two algorithms.
+
+### Task 2: University Schedule Creation
+- **Teacher Class**: Represents a teacher with attributes for first name, last name, age, email, and subjects they can teach.
+- **Greedy Algorithm**: Assigns teachers to subjects by selecting the teacher who covers the most remaining subjects, prioritizing younger teachers in case of a tie.
+- **Coverage Check**: Ensures all subjects are covered or reports if it's impossible with the given teachers.
+- **Output**: Displays the schedule with teacher details and assigned subjects, or a message if full coverage is not possible.
 
 ## Requirements
 - Python 3.x
-- Required libraries:
+- Required libraries for Task 1:
   - `matplotlib` (for plotting)
   - `tabulate` (for table formatting)
   - `numpy` (for array operations)
+- No additional libraries required for Task 2.
 
 ## Installation
 1. Clone or download the project repository.
-2. Install the required Python libraries:
+2. Install the required Python libraries for Task 1:
    ```bash
    pip install matplotlib tabulate numpy
    ```
-3. Ensure the `quicksort_comparison.py` script is in the project directory.
+3. Ensure the scripts `quicksort_comparison.py` and `schedule_greedy.py` are in the project directory.
 
 ## Usage
+
+### Task 1: QuickSort Comparison
 1. Run the script:
    ```bash
    python quicksort_comparison.py
    ```
 2. The script will:
    - Generate random arrays of specified sizes.
-   - Measure and display the average execution time for both algorithms.
+   - Measure and display the average execution time for both QuickSort algorithms.
    - Print a formatted table of results in the console.
    - Save a plot comparing the performance (`quicksort_comparison.png`).
    - Provide an analysis of the results.
 
-## Expected Output
-The console output will look like this:
+**Expected Output**:
 ```
 Порівняння рандомізованого та детермінованого QuickSort
 Розмір масиву: 10000
@@ -74,16 +86,49 @@ The console output will look like this:
 4. The performance difference becomes more noticeable on larger arrays but remains small.
 ```
 
-A plot (`quicksort_comparison.png`) will be generated, showing execution time vs. array size for both algorithms.
+### Task 2: University Schedule Creation
+1. Run the script:
+   ```bash
+   python schedule_greedy.py
+   ```
+2. The script will:
+   - Define a set of subjects and a list of teachers with their details and teachable subjects.
+   - Use a greedy algorithm to assign teachers to subjects.
+   - Output the schedule with teacher details and assigned subjects, or a message if full coverage is not possible.
+
+**Expected Output**:
+```
+Розклад занять:
+Олександр Іваненко, 45 років, email: o.ivanenko@example.com
+   Викладає предмети: Математика, Фізика
+
+Наталія Шевченко, 29 років, email: n.shevchenko@example.com
+   Викладає предмети: Біологія, Хімія
+
+Сергій Коваленко, 50 років, email: s.kovalenko@example.com
+   Викладає предмети: Інформатика
+```
 
 ## Analysis
+
+### Task 1: QuickSort Comparison
 - **Randomized QuickSort**: More robust in worst-case scenarios (e.g., sorted or nearly sorted arrays) as it avoids consistent poor pivot choices. However, it incurs slight overhead due to random number generation.
 - **Deterministic QuickSort**: Slightly faster on random data due to no randomization overhead but can degrade to O(n²) in worst-case scenarios.
 - On large arrays, the difference in execution time is small, but Randomized QuickSort generally provides more consistent performance across various input types.
 
+### Task 2: University Schedule Creation
+- The greedy algorithm minimizes the number of teachers by selecting those who can cover the most uncovered subjects at each step.
+- In case of a tie, the youngest teacher is chosen to break the tie.
+- For the given data, all subjects (Mathematics, Physics, Chemistry, Informatics, Biology) are covered by three teachers:
+  - Oleksandr Ivanenko (Mathematics, Physics)
+  - Nataliia Shevchenko (Biology, Chemistry, chosen as the youngest teacher for Chemistry)
+  - Serhii Kovalenko (Informatics)
+- If full coverage is impossible (e.g., removing a teacher who uniquely covers a subject), the program outputs: "Неможливо покрити всі предмети наявними викладачами."
+
 ## Files
-- `quicksort_comparison.py`: Main script containing the implementation, testing, and visualization logic.
-- `quicksort_comparison.png`: Generated plot comparing the performance of both algorithms (created after running the script).
+- `quicksort_comparison.py`: Script for Task 1, implementing and comparing Randomized and Deterministic QuickSort.
+- `schedule_greedy.py`: Script for Task 2, implementing the greedy algorithm for university schedule creation.
+- `quicksort_comparison.png`: Generated plot comparing the performance of QuickSort algorithms (created after running `quicksort_comparison.py`).
 
 ## License
 This project is licensed under the MIT License.
